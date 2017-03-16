@@ -1,0 +1,48 @@
+****************************************************************************************************
+////////////////////////////////// Sisteme de Operare - Tema 1 /////////////////////////////////////
+//////////////////////////////// Ciuciu Ioan- Dionisie - 333 CA ////////////////////////////////////
+****************************************************************************************************
+
+
+
+	Structurarea temei:
+		
+		Tema este implementata intr-un singur fisier, in care am reprezentat atat structura de Hash-
+	table, cat si functiile necesare parsarii si scrierii in fisier. Avand in vedere ca acest cod
+	trebuie sa ruleze pe doua platforme, am folosit doar biblioteci si functii compatibile pe Win-
+	dows cat si pe Linux. Astfel, pe langa metoda de hash din schelet, am folosit bibliotecile
+	stdio.h, stdlib.h, string.h.
+
+	
+	Detalii despre implementare:
+	
+		-Hashtable:
+		
+			Hashtable-ul meu este implementat ca o lista de liste (denumite Bucket-uri in enunt).
+		Aceasta are un size, care este primit ca input, si lista de liste. Fiecare Bucket este 
+		implementat ca o lista simplu inlantuita, si contine un cuvant, reprezentat ca char*, 
+		si un pointer next, care e folosit pentru a itera prin lista. Folosesc functiile create
+		si clear, pentru a aloca dinamic structura de Hash, respectiv pentru a dezaloca.
+			Functiile pentru adaugare, stergere, afisare, gasire a unui cuvant si dublarea/
+		injumatatirea dimensiunii sunt implementate folosind notiuni simple de structuri de date.
+		
+		-Parsare:
+		
+			Pentru parsarea datelor folosesc functia readFromFile, care foloseste argumentul type
+		pentru diferentierea intre citire de la stdin si citire din fisier. Acest parametru este
+		modificat in main, in functie de numarul de argumente introduse in consola (argc).
+			In principiu, functia readFromFile citeste linie cu linie, ia primul cuvant si verifica
+		daca coincide cu o comanda valida (ex: add, remove), si daca este valida, ia urmatorul 
+		cuvant si daca acesta exista aplica comanda respectiva pe cuvantul respectiv. Exceptie fac
+		functiile de halve si double, care nu primesc un cuvant ca parametru, ci doar se apeleaza
+		pe tabela de hash.
+			Pentru comanda print_bucket, verific intai folosind functia isNumeric, daca index-ul
+		dat ca input este un numar. In continuare, verific daca aceasta comanda trebuie afisat
+		la stdout, sau in fisier, iar pentru aceste doua cazuri am functiile printBucketInFile si
+		printBucket. Similar procedez pentru comanda print, unde am functiile printInFile si print.
+		
+
+****************************************************************************************************
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+****************************************************************************************************
